@@ -1,0 +1,28 @@
+import unittest
+from src.persona import Persona
+from src.alumno import Alumno
+from src.profesor import Profesor
+
+class TestInteraccion(unittest.TestCase):
+    def test_polimorfismo_str(self):
+        # Todas las clases deberían responder correctamente a str()
+        persona = Persona("Ana", "López", "87654321")
+        alumno = Alumno("Juan", "Pérez", "12345678", "A123")
+        profesor = Profesor("María", "García", "11223344", 50000)
+        
+        self.assertTrue("Persona:" in str(persona))
+        self.assertTrue("Alumno:" in str(alumno))
+        self.assertTrue("Profesor:" in str(profesor))
+    
+    def test_coleccion_personas(self):
+        # Deberíamos poder manejar colecciones polimórficas
+        persona = Persona("Ana", "López", "87654321")
+        alumno = Alumno("Juan", "Pérez", "12345678", "A123")
+        profesor = Profesor("María", "García", "11223344", 50000)
+        
+        personas = [persona, alumno, profesor]
+        
+        # Todos deberían poder pensar
+        for p in personas:
+            p.pensar("Idea compartida")
+            self.assertEqual(p.pensamientos, 1)

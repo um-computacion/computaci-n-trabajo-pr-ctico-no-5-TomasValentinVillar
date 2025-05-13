@@ -13,3 +13,18 @@ class TestAlumno(unittest.TestCase):
         alumno = Alumno("Juan", "Pérez", "12345678", "A123")
         expected = "Alumno: DNI: 12345678 Nombre: Juan Apellido: Pérez Legajo: A123"
         self.assertEqual(str(alumno), expected)
+
+    def test_legajo_vacio(self):
+        with self.assertRaises(ValueError):
+            alumno = Alumno("Juan", "Pérez", "12345678", "")
+
+    def test_legajo_formato_invalido(self):
+        with self.assertRaises(ValueError):
+            alumno = Alumno("Juan", "Pérez", "12345678", "123")
+
+    
+    def test_herencia_pensar(self):
+        alumno = Alumno("Juan", "Pérez", "12345678", "A123")
+        alumno.pensar("Una idea estudiantil")
+        self.assertEqual(alumno.pensamientos, 1)
+        self.assertEqual(alumno.ultima_idea, "Una idea estudiantil")

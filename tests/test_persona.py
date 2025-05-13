@@ -22,4 +22,34 @@ class TestPersona(unittest.TestCase):
         persona = Persona("Juan", "Pérez", "12345678")
         persona.pensar("Hola mundo")
         self.assertEqual(persona.ultima_idea, "Hola mundo")
+
+    def test_pensar_con_tipo_invalido(self):
+        persona = Persona("Juan", "Pérez", "12345678")
+        with self.assertRaises(TypeError):
+            persona.pensar(123)
+
+    def test_pensar_con_cadena_vacia(self):
+        persona = Persona("Juan", "Pérez", "12345678")
+        with self.assertRaises(ValueError):
+            persona.pensar("")
+    def test_dni_vacio(self):
+        with self.assertRaises(ValueError):
+            persona = Persona("Juan", "Pérez", "")
+
+    def test_dni_formato_invalido(self):
+        with self.assertRaises(ValueError):
+            persona = Persona("Juan", "Pérez", "123abc")
+
+    def test_nombre_vacio(self):
+        with self.assertRaises(ValueError):
+            persona = Persona("", "Pérez", "12345678")
+
+    def test_apellido_vacio(self):
+        with self.assertRaises(ValueError):
+            persona = Persona("Juan", "", "12345678")
+
+    def test_pensar_none(self):
+        persona = Persona("Juan", "Pérez", "12345678")
+        with self.assertRaises(TypeError):
+            persona.pensar(None)
     

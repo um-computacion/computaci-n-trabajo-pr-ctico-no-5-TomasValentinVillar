@@ -13,3 +13,15 @@ class TestProfesor(unittest.TestCase):
         profesor = Profesor("Juan", "Pérez", "12345678", 50000)
         expected = "Profesor: DNI: 12345678 Nombre: Juan Apellido: Pérez Sueldo: 50000"
         self.assertEqual(str(profesor), expected)
+
+    def test_sueldo_negativo(self):
+        with self.assertRaises(ValueError):
+            profesor = Profesor("Juan", "Pérez", "12345678", -5000)
+            
+    def test_sueldo_cero(self):
+        with self.assertRaises(ValueError):
+            profesor = Profesor("Juan", "Pérez", "12345678", 0)
+
+    def test_sueldo_no_numerico(self):
+        with self.assertRaises(TypeError):
+            profesor = Profesor("Juan", "Pérez", "12345678", "50000")
