@@ -247,3 +247,12 @@ class Persona:
   python -m unittest discover tests
   ```
 - Recordar seguir el ciclo rojo-verde-refactor en cada etapa
+## Intrucciones de Ejecución
+- Para ejecutar las pruebas:
+  ```bash
+  python -m unittest discover tests
+  ```
+- Para ejecutar los ejemplos:
+  ```bash
+  python3 -m src.ejemplos
+  ```
